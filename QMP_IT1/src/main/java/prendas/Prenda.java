@@ -4,10 +4,7 @@ public class Prenda {
 
     private Categoria categoria;
     private TipoPrenda tipoPrenda;
-    private String material;
-    private String colorPrincipal;
-    private String colorSecundario;
-
+    private Material material;
 
     // --- Setters --- //
 
@@ -28,49 +25,17 @@ public class Prenda {
     }
 
     private boolean esCompatible(Categoria categoria, TipoPrenda tipoPrenda) {
-        DiccComp diccionario = DiccComp.getInstance();
+        Compatibilidades diccionario = Compatibilidades.getInstance();
         return diccionario.esValido(categoria, tipoPrenda);
     }
 
-    public void setMaterial(String material) {
+    public Boolean estoyListo() {
+        return  !this.tipoPrenda.equals(null) &&
+                !this.categoria.equals(null) &&
+                this.material.estoyListo();
+    }
+
+    public void setMaterial(Material material) {
         this.material = material;
     }
-
-    public void setColorPrincipal(String colorPrincipal) {
-        this.colorPrincipal = colorPrincipal;
-    }
-
-    public void setColorSecundario(String colorSecundario) {
-        this.colorSecundario = colorSecundario;
-    }
-
-    // --- Limitando las Prendas con atributos vacios --- //
-
-    public Prenda(
-            Categoria categoria,
-            TipoPrenda tipoPrenda,
-            String material,
-            String colorPrincipal) throws Exception {
-
-        this.setCategoria(categoria);
-        this.setTipoPrenda(tipoPrenda);
-        this.setMaterial(material);
-        this.setColorPrincipal(colorPrincipal);
-        this.setColorSecundario(null);
-    }
-
-    public Prenda(
-            Categoria categoria,
-            TipoPrenda tipoPrenda,
-            String material,
-            String colorPrincipal,
-            String colorSecundario) throws Exception {
-
-        this.setCategoria(categoria);
-        this.setTipoPrenda(tipoPrenda);
-        this.setMaterial(material);
-        this.setColorPrincipal(colorPrincipal);
-        this.setColorSecundario(colorSecundario);
-    }
-
 }

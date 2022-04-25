@@ -2,20 +2,20 @@ package prendas;
 
 import java.util.*;
 
-public class DiccComp {
+public class Compatibilidades {
 
     private Map<Categoria, Set<TipoPrenda>> diccionario;
 
     // --- Singleton --- //
-    private static DiccComp instance = null;
+    private static Compatibilidades instance = null;
 
-    private DiccComp(){};
+    private Compatibilidades(){};
 
-    public static DiccComp getInstance()
+    public static Compatibilidades getInstance()
     {
         if(instance == null)
         {
-            instance = new DiccComp();
+            instance = new Compatibilidades();
 
             instance.diccionario = new HashMap<>();
 
