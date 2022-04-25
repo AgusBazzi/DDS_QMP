@@ -1,4 +1,6 @@
-package prendas;
+package atuendo;
+
+import prendas.Prenda;
 
 import java.util.ArrayList;
 import java.util.List;
