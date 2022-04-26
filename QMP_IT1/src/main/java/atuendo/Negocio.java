@@ -20,7 +20,7 @@ public class Negocio {
     if(uniformeBuscado.equals(null)) {
       throw new Exception("No existe un uniforme para esta institucion");
     } else {
-      return uniformeBuscado.clonarUniforme();
+      return uniformeBuscado.clone();
     }
   }
 }

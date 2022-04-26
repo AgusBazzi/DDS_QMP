@@ -26,7 +26,7 @@ public class Prenda {
         }
     }
 
-    private boolean esCompatible(Categoria categoria, TipoPrenda tipoPrenda) {
+    private Boolean esCompatible(Categoria categoria, TipoPrenda tipoPrenda) {
         Compatibilidades diccionario = Compatibilidades.getInstance();
         return diccionario.esValido(categoria, tipoPrenda);
     }
