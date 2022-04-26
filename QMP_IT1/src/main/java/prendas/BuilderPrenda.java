@@ -3,11 +3,11 @@ package prendas;
 public class BuilderPrenda {
   private Prenda resultado = new Prenda();
 
-  public void buildTipo(TipoPrenda tipoPrenda) {
+  public void buildTipo(TipoPrenda tipoPrenda) throws Exception {
     this.resultado.setTipoPrenda(tipoPrenda);
   }
 
-  public void buildCategoria(Categoria categoria) {
+  public void buildCategoria(Categoria categoria) throws Exception {
     this.resultado.setCategoria(categoria);
   }
 
