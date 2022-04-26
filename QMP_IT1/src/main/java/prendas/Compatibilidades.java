@@ -30,6 +30,8 @@ public class Compatibilidades {
     // --- Fin Singleton --- //
 
     public boolean esValido(Categoria categoria, TipoPrenda tipoPrenda) {
-        return this.diccionario.get(categoria).contains(tipoPrenda);
+        return  categoria.equals(null) ||
+                tipoPrenda.equals(null) ||
+                this.diccionario.get(categoria).contains(tipoPrenda);
     }
 }
