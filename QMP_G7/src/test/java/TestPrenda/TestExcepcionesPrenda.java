@@ -1,5 +1,6 @@
 package TestPrenda;
 
+import excepciones.PrendaIncompatibleException;
 import excepciones.PrendaIncompletaException;
 import org.junit.Before;
 import prendas.*;
@@ -55,6 +56,32 @@ public class TestExcepcionesPrenda {
         "Esperaba que la getResultado() tire excepcion y no lo hizo."
     );
     Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! Es obligatorio el campo: colorPrincipal"));
+  }
+
+  @Test
+  public void prendaCamisaNoEsPrendaInferior() throws Exception {
+
+    this.builder.buildCategoria(Categoria.PARTE_INFERIOR);
+
+    PrendaIncompatibleException thrown = assertThrows(
+        PrendaIncompatibleException.class,
+        () -> builder.buildTipo(TipoPrenda.CAMISA),
+        "Esperaba que la buildTipo() tire excepcion y no lo hizo."
+    );
+    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! El tipo y categoria no son compatibles."));
+  }
+
+  @Test
+  public void prendaPantalonNoEsPrendaSuperior() throws Exception {
+
+    this.builder.buildTipo(TipoPrenda.PANTALON);
+
+    PrendaIncompatibleException thrown = assertThrows(
+        PrendaIncompatibleException.class,
+        () -> builder.buildCategoria(Categoria.PARTE_SUPERIOR),
+        "Esperaba que la buildTipo() tire excepcion y no lo hizo."
+    );
+    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! El tipo y categoria no son compatibles."));
   }
 
 }
