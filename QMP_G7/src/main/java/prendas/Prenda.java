@@ -1,5 +1,7 @@
 package prendas;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import excepciones.PrendaIncompatibleException;
 import excepciones.PrendaIncompletaException;
 
 public class Prenda {
@@ -18,7 +20,7 @@ public class Prenda {
             this.categoria = categoria;
         }
         else {
-            throw new Exception("La categoria ingresada no corresponde con el tipo de la prenda");
+            throw new PrendaIncompatibleException();
         }
     }
 
@@ -27,7 +29,7 @@ public class Prenda {
             this.tipoPrenda = tipoPrenda;
         }
         else {
-            throw new Exception("El tipo ingresado no corresponde con la categoria de la prenda");
+            throw new PrendaIncompatibleException();
         }
     }
 
@@ -47,5 +49,13 @@ public class Prenda {
 
     public void setMaterial(Material material) {
         this.material = material;
+    }
+
+    public Boolean tieneCategoria(Categoria unaCategoria) {
+        return this.categoria.equals(unaCategoria);
+    }
+
+    public Categoria getCategoria() {
+        return this.categoria;
     }
 }

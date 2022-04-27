@@ -32,4 +32,8 @@ public class BuilderPrenda {
       return this.resultado;
   }
 
+  public void reset() {
+    this.resultado = new Prenda();
+  }
+
 }

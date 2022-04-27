@@ -13,8 +13,8 @@ public class Atuendo {
         return prendas;
     }
 
-    public void setPrendas(List<Prenda> prendas) {
-        this.prendas = prendas;
+    public void agregarPrenda(Prenda unaPrenda) {
+        this.prendas.add(unaPrenda);
     }
 
     public Atuendo() {

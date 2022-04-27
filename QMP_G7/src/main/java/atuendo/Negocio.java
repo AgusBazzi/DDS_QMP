@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class Negocio {
   private List<Uniforme> uniformes = new ArrayList<Uniforme>();
 
-  public void agregarUniforme(String unaInstitucion) {
-    // TODO
+  public void agregarUniforme(Uniforme unUniforme) {
+    this.uniformes.add(unUniforme);
   }
 
   public Uniforme getUniforme(String unaInstitucion) throws Exception {
