@@ -12,8 +12,8 @@ public class Material {
   private static String[] atributosObligatorios = {"nombre", "colorPrincipal"};
 
   public void setTrama(Trama trama) {
-    if(trama.equals(null))  this.trama = Trama.LISA;
-    else                    this.trama = trama;
+    if(trama == null)  this.trama = Trama.LISA;
+    else               this.trama = trama;
   }
 
   public void setColorPrincipal(String colorPrincipal) {
@@ -34,4 +34,19 @@ public class Material {
     }
   }
 
+  public String getNombre() {
+    return nombre;
+  }
+
+  public Trama getTrama() {
+    return trama;
+  }
+
+  public String getColorPrincipal() {
+    return colorPrincipal;
+  }
+
+  public String getColorSecundario() {
+    return colorSecundario;
+  }
 }

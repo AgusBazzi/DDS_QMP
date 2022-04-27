@@ -11,10 +11,8 @@ public class Compatibilidades {
 
     private Compatibilidades(){};
 
-    public static Compatibilidades getInstance()
-    {
-        if(instance == null)
-        {
+    public static Compatibilidades getInstance() {
+        if(instance == null) {
             instance = new Compatibilidades();
 
             instance.diccionario = new HashMap<>();

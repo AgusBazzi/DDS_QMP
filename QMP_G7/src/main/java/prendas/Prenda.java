@@ -1,6 +1,5 @@
 package prendas;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import excepciones.PrendaIncompatibleException;
 import excepciones.PrendaIncompletaException;
 
@@ -57,5 +56,13 @@ public class Prenda {
 
     public Categoria getCategoria() {
         return this.categoria;
+    }
+
+    public TipoPrenda getTipoPrenda() {
+        return tipoPrenda;
+    }
+
+    public Material getMaterial() {
+        return material;
     }
 }
