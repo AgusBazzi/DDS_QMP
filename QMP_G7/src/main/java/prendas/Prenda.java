@@ -2,13 +2,14 @@ package prendas;
 
 import excepciones.PrendaIncompletaException;
 
-import java.lang.reflect.Field;
-
 public class Prenda {
 
     private Categoria categoria;
     private TipoPrenda tipoPrenda;
     private Material material;
+
+    private static String[] atributosObligatorios = {"categoria", "tipoPrenda", "material"};
+
 
     // --- Setters --- //
 
@@ -35,12 +36,13 @@ public class Prenda {
         return diccionario.esValido(categoria, tipoPrenda);
     }
 
-    public void validarAtributosCompletos() throws PrendaIncompletaException {
-        Field[] atributos = this.getClass().getDeclaredFields();
+    public void validarAtributosCompletos() throws PrendaIncompletaException, NoSuchFieldException, IllegalAccessException {
 
-        for(Field field : atributos) {
-            if(field.equals(null)) throw new PrendaIncompletaException(field.getName());
+        for(String campo : atributosObligatorios) {
+            if(this.getClass().getDeclaredField(campo).get(this) == null) throw new PrendaIncompletaException(campo);
         }
+
+        this.material.validarAtributosCompletos();
     }
 
     public void setMaterial(Material material) {

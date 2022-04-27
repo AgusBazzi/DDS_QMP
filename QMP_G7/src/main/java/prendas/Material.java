@@ -1,14 +1,15 @@
 package prendas;
 
+import excepciones.PrendaIncompletaException;
+
 public class Material {
+
   private String nombre;
   private Trama trama;
   private String colorPrincipal;
   private String colorSecundario;
 
-  public Boolean estoyListo() {
-    return !this.nombre.equals(null) && !this.colorPrincipal.equals(null);
-  }
+  private static String[] atributosObligatorios = {"nombre", "colorPrincipal"};
 
   public void setTrama(Trama trama) {
     if(trama.equals(null))  this.trama = Trama.LISA;
@@ -26,4 +27,11 @@ public class Material {
   public void setNombre(String nombreMaterial) {
     this.nombre = nombreMaterial;
   }
+
+  public void validarAtributosCompletos() throws NoSuchFieldException, IllegalAccessException {
+    for(String campo : atributosObligatorios) {
+      if(this.getClass().getDeclaredField(campo).get(this) == null) throw new PrendaIncompletaException(campo);
+    }
+  }
+
 }

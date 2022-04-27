@@ -3,7 +3,12 @@ package prendas;
 import excepciones.PrendaIncompletaException;
 
 public class BuilderPrenda {
-  private Prenda resultado = new Prenda();
+
+  private Prenda resultado;
+
+  public BuilderPrenda(Prenda unaPrenda) {
+    this.resultado = unaPrenda;
+  }
 
   public void buildTipo(TipoPrenda tipoPrenda) throws Exception {
     this.resultado.setTipoPrenda(tipoPrenda);
@@ -22,7 +27,7 @@ public class BuilderPrenda {
     this.resultado.setMaterial(material);
   }
 
-  public Prenda getResultado() throws PrendaIncompletaException {
+  public Prenda getResultado() throws PrendaIncompletaException, NoSuchFieldException, IllegalAccessException {
       this.resultado.validarAtributosCompletos();
       return this.resultado;
   }
