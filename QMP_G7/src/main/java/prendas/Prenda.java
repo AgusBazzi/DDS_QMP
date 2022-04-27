@@ -1,5 +1,9 @@
 package prendas;
 
+import excepciones.PrendaIncompletaException;
+
+import java.lang.reflect.Field;
+
 public class Prenda {
 
     private Categoria categoria;
@@ -31,10 +35,12 @@ public class Prenda {
         return diccionario.esValido(categoria, tipoPrenda);
     }
 
-    public Boolean estoyListo() {
-        return  !this.tipoPrenda.equals(null) &&
-                !this.categoria.equals(null) &&
-                this.material.estoyListo();
+    public void validarAtributosCompletos() throws PrendaIncompletaException {
+        Field[] atributos = this.getClass().getDeclaredFields();
+
+        for(Field field : atributos) {
+            if(field.equals(null)) throw new PrendaIncompletaException(field.getName());
+        }
     }
 
     public void setMaterial(Material material) {

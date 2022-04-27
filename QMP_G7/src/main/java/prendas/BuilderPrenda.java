@@ -1,5 +1,7 @@
 package prendas;
 
+import excepciones.PrendaIncompletaException;
+
 public class BuilderPrenda {
   private Prenda resultado = new Prenda();
 
@@ -20,12 +22,9 @@ public class BuilderPrenda {
     this.resultado.setMaterial(material);
   }
 
-  public Prenda getResultado() throws Exception {
-    if(this.resultado.estoyListo()) {
+  public Prenda getResultado() throws PrendaIncompletaException {
+      this.resultado.validarAtributosCompletos();
       return this.resultado;
-    } else {
-      throw new Exception("La prenda no esta completa");
-    }
   }
 
 }
