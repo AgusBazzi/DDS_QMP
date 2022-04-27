@@ -1,10 +1,15 @@
 package prendas;
 
+import excepciones.PrendaIncompletaException;
+
 public class Prenda {
 
     private Categoria categoria;
     private TipoPrenda tipoPrenda;
     private Material material;
+
+    private static String[] atributosObligatorios = {"categoria", "tipoPrenda", "material"};
+
 
     // --- Setters --- //
 
@@ -31,10 +36,13 @@ public class Prenda {
         return diccionario.esValido(categoria, tipoPrenda);
     }
 
-    public Boolean estoyListo() {
-        return  !this.tipoPrenda.equals(null) &&
-                !this.categoria.equals(null) &&
-                this.material.estoyListo();
+    public void validarAtributosCompletos() throws PrendaIncompletaException, NoSuchFieldException, IllegalAccessException {
+
+        for(String campo : atributosObligatorios) {
+            if(this.getClass().getDeclaredField(campo).get(this) == null) throw new PrendaIncompletaException(campo);
+        }
+
+        this.material.validarAtributosCompletos();
     }
 
     public void setMaterial(Material material) {
