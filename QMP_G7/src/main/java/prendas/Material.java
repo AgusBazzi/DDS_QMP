@@ -28,10 +28,21 @@ public class Material {
     this.nombre = nombreMaterial;
   }
 
-  public void validarAtributosCompletos() throws NoSuchFieldException, IllegalAccessException {
-    for(String campo : atributosObligatorios) {
-      if(this.getClass().getDeclaredField(campo).get(this) == null) throw new PrendaIncompletaException(campo);
-    }
+  public void validarAtributosCompletos() {
+    this.validarNombreNoVacio();
+    this.validarColorPrincipalNoVacio();
+  }
+
+  private void validarNombreNoVacio() {
+    if(chequearVacio(this.nombre))   throw new PrendaIncompletaException("material");
+  }
+
+  private void validarColorPrincipalNoVacio() {
+    if(chequearVacio(this.colorPrincipal))   throw new PrendaIncompletaException("color principal");
+  }
+
+  private Boolean chequearVacio(Object atributoDePrenda){
+    return atributoDePrenda == null;
   }
 
   public String getNombre() {

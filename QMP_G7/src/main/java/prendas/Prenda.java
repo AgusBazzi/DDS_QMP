@@ -9,9 +9,6 @@ public class Prenda {
     private TipoPrenda tipoPrenda;
     private Material material;
 
-    private static String[] atributosObligatorios = {"categoria", "tipoPrenda", "material"};
-
-
     // --- Setters --- //
 
     public void setCategoria(Categoria categoria) throws Exception {
@@ -37,13 +34,27 @@ public class Prenda {
         return diccionario.esValido(categoria, tipoPrenda);
     }
 
-    public void validarAtributosCompletos() throws PrendaIncompletaException, NoSuchFieldException, IllegalAccessException {
-
-        for(String campo : atributosObligatorios) {
-            if(this.getClass().getDeclaredField(campo).get(this) == null) throw new PrendaIncompletaException(campo);
-        }
-
+    public void validarAtributosCompletos() throws PrendaIncompletaException {
+        this.validarCategoriaNoVacia();
+        this.validarTipoPrendaNoVacio();
+        this.validarMaterialNoVacio();
         this.material.validarAtributosCompletos();
+    }
+
+    private void validarCategoriaNoVacia() {
+        if(chequearVacio(this.categoria))   throw new PrendaIncompletaException("categoria");
+    }
+
+    private void validarTipoPrendaNoVacio() {
+        if(chequearVacio(this.tipoPrenda))   throw new PrendaIncompletaException("tipo de prenda");
+    }
+
+    private void validarMaterialNoVacio() {
+        if(chequearVacio(this.material))   throw new PrendaIncompletaException("material");
+    }
+
+    private Boolean chequearVacio(Object atributoDePrenda){
+        return atributoDePrenda == null;
     }
 
     public void setMaterial(Material material) {

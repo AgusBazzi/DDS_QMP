@@ -40,7 +40,7 @@ public class TestExcepcionesPrenda {
         () -> builder.getResultado(),
         "Esperaba que la getResultado() tire excepcion y no lo hizo."
     );
-    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! Es obligatorio el campo: tipo"));
+    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! Es obligatorio el campo: tipo de prenda"));
   }
 
   @Test
@@ -55,7 +55,7 @@ public class TestExcepcionesPrenda {
         () -> builder.getResultado(),
         "Esperaba que la getResultado() tire excepcion y no lo hizo."
     );
-    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! Es obligatorio el campo: colorPrincipal"));
+    Assert.assertTrue(thrown.getMessage().contains("La prenda no es valida! Es obligatorio el campo: color principal"));
   }
 
   @Test
@@ -72,7 +72,7 @@ public class TestExcepcionesPrenda {
   }
 
   @Test
-  public void prendaPantalonNoEsPrendaSuperior() throws Exception {
+  public void prendaPantalonNoEsPrendaInferior() throws Exception {
 
     this.builder.buildTipo(TipoPrenda.PANTALON);
 
