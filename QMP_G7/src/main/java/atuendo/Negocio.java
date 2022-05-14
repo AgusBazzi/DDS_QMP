@@ -1,9 +1,5 @@
 package atuendo;
 
-import prendas.Categoria;
-import prendas.Compatibilidades;
-import prendas.TipoPrenda;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

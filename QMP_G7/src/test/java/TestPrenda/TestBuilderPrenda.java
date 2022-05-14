@@ -16,8 +16,7 @@ public class TestBuilderPrenda {
   @Before
   public void beforeTest() throws Exception {
     this.builder = new BuilderPrenda(new Prenda());
-    this.builder.buildCategoria(Categoria.PARTE_SUPERIOR);
-    this.builder.buildTipo(TipoPrenda.CAMISA);
+    this.builder.buildTipo(TipoDePrendaEnum.REMERA);
     this.builder.buildMaterial("tela",null,"rojo","amarillo");
     prendaResultado = this.builder.getResultado();
   }
@@ -29,7 +28,7 @@ public class TestBuilderPrenda {
 
   @Test
   public void builderAgregaTipoCorrectamente() {
-    assertEquals(TipoPrenda.CAMISA,prendaResultado.getTipoPrenda());
+    assertEquals(TipoDePrendaEnum.REMERA,prendaResultado.getTipoDePrenda());
   }
 
   @Test

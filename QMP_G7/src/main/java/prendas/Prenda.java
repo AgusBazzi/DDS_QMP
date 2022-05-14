@@ -1,48 +1,22 @@
 package prendas;
 
-import excepciones.PrendaIncompatibleException;
 import excepciones.PrendaIncompletaException;
 
 public class Prenda {
 
-    private Categoria categoria;
     private TipoPrenda tipoPrenda;
     private Material material;
 
     // --- Setters --- //
 
-    public void setCategoria(Categoria categoria) throws Exception {
-        if (this.esCompatible(categoria, this.tipoPrenda)) {
-            this.categoria = categoria;
-        }
-        else {
-            throw new PrendaIncompatibleException();
-        }
-    }
-
-    public void setTipoPrenda(TipoPrenda tipoPrenda) throws Exception {
-        if (this.esCompatible(this.categoria, tipoPrenda)) {
-            this.tipoPrenda = tipoPrenda;
-        }
-        else {
-            throw new PrendaIncompatibleException();
-        }
-    }
-
-    private Boolean esCompatible(Categoria categoria, TipoPrenda tipoPrenda) {
-        Compatibilidades diccionario = Compatibilidades.getInstance();
-        return diccionario.esValido(categoria, tipoPrenda);
+    public void setTipoPrenda(TipoPrenda tipoPrenda) {
+        this.tipoPrenda = tipoPrenda;
     }
 
     public void validarAtributosCompletos() throws PrendaIncompletaException {
-        this.validarCategoriaNoVacia();
         this.validarTipoPrendaNoVacio();
         this.validarMaterialNoVacio();
         this.material.validarAtributosCompletos();
-    }
-
-    private void validarCategoriaNoVacia() {
-        if(chequearVacio(this.categoria))   throw new PrendaIncompletaException("categoria");
     }
 
     private void validarTipoPrendaNoVacio() {
@@ -62,15 +36,15 @@ public class Prenda {
     }
 
     public Boolean tieneCategoria(Categoria unaCategoria) {
-        return this.categoria.equals(unaCategoria);
+        return this.tipoPrenda.tieneCategoria(unaCategoria);
     }
 
     public Categoria getCategoria() {
-        return this.categoria;
+        return this.tipoPrenda.getCategoria();
     }
 
-    public TipoPrenda getTipoPrenda() {
-        return tipoPrenda;
+    public TipoDePrendaEnum getTipoDePrenda() {
+        return tipoPrenda.getTipoDePrenda();
     }
 
     public Material getMaterial() {

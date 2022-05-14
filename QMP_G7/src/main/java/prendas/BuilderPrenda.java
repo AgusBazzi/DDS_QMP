@@ -10,12 +10,23 @@ public class BuilderPrenda {
     this.resultado = unaPrenda;
   }
 
-  public void buildTipo(TipoPrenda tipoPrenda) throws Exception {
-    this.resultado.setTipoPrenda(tipoPrenda);
-  }
-
-  public void buildCategoria(Categoria categoria) throws Exception {
-    this.resultado.setCategoria(categoria);
+  public void buildTipo(TipoDePrendaEnum tipoDePrenda) throws Exception {
+    TipoPrenda tipoAAsignar = null;
+    switch(tipoDePrenda) {
+      case REMERA:
+        tipoAAsignar = TipoPrenda.crearRemera();
+        break;
+      case ZAPATO:
+        tipoAAsignar = TipoPrenda.crearZapato();
+        break;
+      case ANTEOJOS:
+        tipoAAsignar = TipoPrenda.crearAnteojos();
+        break;
+      case PANTALON:
+        tipoAAsignar = TipoPrenda.crearPantalon();
+        break;
+    }
+    this.resultado.setTipoPrenda(tipoAAsignar);
   }
 
   public void buildMaterial(String nombreMaterial, Trama trama, String colorPrincipal, String colorSecundario) {
