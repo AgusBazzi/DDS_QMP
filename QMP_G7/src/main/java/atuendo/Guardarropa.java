@@ -2,6 +2,7 @@ package atuendo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 import excepciones.PrendaInexistenteException;
 import prendas.Categoria;
@@ -11,7 +12,10 @@ public class Guardarropa {
 
 	// esta bien el package?
 
-	private List<Prenda> prendas;
+	private List<Prenda> prendas = new ArrayList<>();
+
+	public Guardarropa() {
+	}
 	// private List<Atuendo> atuendosPersonalizados; no estoy seguro si esto
 	// realmente importa //en el d de clases tiene lista de prendas
 
@@ -61,4 +65,11 @@ public class Guardarropa {
 
 	}
 
+	public void addPrenda(Prenda unaPrenda) {
+		this.prendas.add(unaPrenda);
+	}
+
+	public List<Prenda> getPrendas() {
+		return this.prendas;
+	}
 }
