@@ -57,12 +57,11 @@ public class Guardarropa {
 				.findAny()
 				.get();
 
-		if (unaPrendaSugerida.equals(null)) {
+		if (unaPrendaSugerida == null) {
 			throw new PrendaInexistenteException(unaCategoria.toString() );
 		} else {
 			atuendoSugerido.agregarPrenda(unaPrendaSugerida);
 		}
-
 	}
 
 	public void addPrenda(Prenda unaPrenda) {

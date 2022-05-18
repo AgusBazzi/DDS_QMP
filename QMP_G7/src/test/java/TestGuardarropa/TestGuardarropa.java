@@ -1,15 +1,12 @@
 package TestGuardarropa;
 
+import atuendo.Atuendo;
 import atuendo.Guardarropa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import prendas.BuilderPrenda;
-import prendas.Prenda;
-import prendas.TipoDePrendaEnum;
-import prendas.Trama;
+import prendas.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGuardarropa {
   private Guardarropa unGuardarropa;
@@ -19,28 +16,20 @@ public class TestGuardarropa {
   public void beforeTest() throws Exception {
     builderPrenda = new BuilderPrenda(new Prenda());
     unGuardarropa = new Guardarropa();
-    builderPrenda.buildTipo(TipoDePrendaEnum.REMERA);
-    builderPrenda.buildMaterial("Tela", Trama.A_CUADROS, "Rojo", null);
-    unGuardarropa.addPrenda(builderPrenda.getResultado());
-    builderPrenda.reset();
-    builderPrenda.buildTipo(TipoDePrendaEnum.REMERA);
-    builderPrenda.buildMaterial("Lana", Trama.LISA, "Blanco", null);
-    unGuardarropa.addPrenda(builderPrenda.getResultado());
-    builderPrenda.reset();
-    builderPrenda.buildTipo(TipoDePrendaEnum.PANTALON);
-    builderPrenda.buildMaterial("Algodon", Trama.RAYADA, "Negro", null);
-    unGuardarropa.addPrenda(builderPrenda.getResultado());
-    builderPrenda.reset();
-    builderPrenda.buildTipo(TipoDePrendaEnum.PANTALON);
-    builderPrenda.buildMaterial("Lona", Trama.CON_LUNARES, "Azul", null);
-    unGuardarropa.addPrenda(builderPrenda.getResultado());
-    builderPrenda.reset();
-    builderPrenda.buildTipo(TipoDePrendaEnum.ZAPATO);
-    builderPrenda.buildMaterial("Cuero", Trama.LISA, "Negro", null);
-    unGuardarropa.addPrenda(builderPrenda.getResultado());
-    builderPrenda.reset();
-    builderPrenda.buildTipo(TipoDePrendaEnum.ANTEOJOS);
-    builderPrenda.buildMaterial("Policarbonato", Trama.LISA, "Dorado", null);
+    this.crearPrenda(TipoDePrendaEnum.REMERA, "Tela", Trama.A_CUADROS, "Rojo");
+    this.crearPrenda(TipoDePrendaEnum.REMERA, "Lana", Trama.LISA, "Blanco");
+    this.crearPrenda(TipoDePrendaEnum.PANTALON, "Algodon", Trama.RAYADA, "Negro");
+    this.crearPrenda(TipoDePrendaEnum.PANTALON, "Lona", Trama.CON_LUNARES, "Azul");
+    this.crearPrenda(TipoDePrendaEnum.ZAPATO, "Cuero", Trama.LISA, "Negro");
+    this.crearPrenda(TipoDePrendaEnum.ANTEOJOS, "Policarbonato", Trama.LISA, "Dorado");
+  }
+
+  private void crearPrenda(TipoDePrendaEnum tipo,
+                             String unMaterial,
+                             Trama unaTrama,
+                             String unColorPrincipal) throws Exception {
+    builderPrenda.buildTipo(tipo);
+    builderPrenda.buildMaterial(unMaterial, unaTrama, unColorPrincipal, null);
     unGuardarropa.addPrenda(builderPrenda.getResultado());
     builderPrenda.reset();
   }
@@ -53,5 +42,31 @@ public class TestGuardarropa {
   @Test
   public void elGuardarropaAgregaPrendasCorrectamente() {
     assertEquals(unGuardarropa.getPrendas().size(), 6);
+  }
+
+  @Test
+  public void elAtuendoSugeridoSinAccesoriosContieneSoloUnaPrendaDeCadaTipo() {
+    Atuendo unAtuendoSugerido = unGuardarropa.crearSugerencia();
+    assertEquals(unAtuendoSugerido.getPrendas().size(), 3);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.PARTE_SUPERIOR);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.PARTE_INFERIOR);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.CALZADO);
+  }
+
+  @Test
+  public void elAtuendoSugeridoConAccesoriosContieneSoloUnaPrendaDeCadaTipo() {
+    Atuendo unAtuendoSugerido = unGuardarropa.crearSugerenciaConAccesorio();
+    assertEquals(unAtuendoSugerido.getPrendas().size(), 4);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.PARTE_SUPERIOR);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.PARTE_INFERIOR);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.CALZADO);
+    this.assertCategoriaUnica(unAtuendoSugerido, Categoria.ACCESORIO);
+  }
+
+  private void assertCategoriaUnica(Atuendo unAtuendo, Categoria categoria) {
+    assertEquals(unAtuendo.getPrendas()
+        .stream()
+        .filter(prenda -> prenda.tieneCategoria(categoria))
+        .count(), 1);
   }
 }
