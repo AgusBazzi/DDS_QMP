@@ -1,11 +1,13 @@
 package prendas;
 
 import excepciones.PrendaIncompletaException;
+import limpieza.*;
 
 public class Prenda {
 
     private TipoPrenda tipoPrenda;
     private Material material;
+    private EstadoLimpieza estadoLimpieza;
 
     // --- Setters --- //
 
@@ -49,5 +51,34 @@ public class Prenda {
 
     public Material getMaterial() {
         return material;
+    }
+
+    public void setEstadoLimpieza() {
+        this.estadoLimpieza = new Limpia(0);
+    }
+
+    public EstadoLimpieza getEstadoLimpieza() {
+        return this.estadoLimpieza;
+    }
+
+    public void setPrendaSucia() {
+        this.estadoLimpieza = new Sucia(0);
+    }
+
+    public void setPrendaLimpia() {
+        this.estadoLimpieza = new Limpia(0);
+    }
+
+    public void setPrendaPercudida() {
+        this.estadoLimpieza = new Percudida();
+    }
+
+    public void setPrendaLavandose() {
+        this.estadoLimpieza = new Lavandose();
+    }
+
+    public void utilizarPrenda() {
+
+        //TODO: implementar el uso de la prenda, cuando se hace la sugerencia
     }
 }
