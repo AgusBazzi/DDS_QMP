@@ -28,16 +28,17 @@ public class Guardarropa {
 	} //testear
 
 	public Atuendo crearSugerenciaConAccesorio() {
-		Atuendo unaSugerencia = new Atuendo();
+		Atuendo unaSugerencia;
 		unaSugerencia = crearSugerencia();
 		agregarPrendaSugerida(unaSugerencia, Categoria.ACCESORIO);
+		unaSugerencia.serUsado();
 		return unaSugerencia;
 	} //testear
 
-	public List<Atuendo> variasSugerencias(int cantidadSugerencias) {
+	public List<Atuendo> variasSugerencias(Integer cantidadSugerencias) {
 		List<Atuendo> listaSugerencias = new ArrayList<>();
 		for (int i = 0; i < cantidadSugerencias; i++) {
-			Atuendo unaSugerencia = new Atuendo();
+			Atuendo unaSugerencia;
 			if (Math.random() == 0) {
 				unaSugerencia = crearSugerencia();
 			} else {
@@ -50,7 +51,7 @@ public class Guardarropa {
 	} // test, ver como hacer que no repita sugerencias
 
 	private void agregarPrendaSugerida(Atuendo atuendoSugerido, Categoria unaCategoria) throws PrendaInexistenteException {
-		Prenda unaPrendaSugerida = new Prenda();
+		Prenda unaPrendaSugerida;
 		unaPrendaSugerida = prendas
 				.stream()
 				.filter(prenda -> prenda.tieneCategoria(unaCategoria))
@@ -58,7 +59,7 @@ public class Guardarropa {
 				.get();
 
 		if (unaPrendaSugerida == null) {
-			throw new PrendaInexistenteException(unaCategoria.toString() );
+			throw new PrendaInexistenteException(unaCategoria.toString());
 		} else {
 			atuendoSugerido.agregarPrenda(unaPrendaSugerida);
 		}

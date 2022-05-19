@@ -2,9 +2,8 @@ package TestGuardarropa;
 
 import atuendo.Atuendo;
 import atuendo.Guardarropa;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import prendas.*;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class TestGuardarropa {
   private Guardarropa unGuardarropa;
   private BuilderPrenda builderPrenda;
 
-  @BeforeEach
+  @Before
   public void beforeTest() throws Exception {
     builderPrenda = new BuilderPrenda(new Prenda());
     unGuardarropa = new Guardarropa();

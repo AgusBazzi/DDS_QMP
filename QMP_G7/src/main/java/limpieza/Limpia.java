@@ -2,30 +2,20 @@ package limpieza;
 
 import prendas.Prenda;
 
-public class Limpia extends Usable implements EstadoLimpieza {
+public class Limpia extends Usable {
 
-  static final int LIMITE_LIMPIA = 2;
+  static final Integer LIMITE_LIMPIA = 2;
+
+  public Integer getLimite(){
+    return LIMITE_LIMPIA;
+  }
+
+  @Override
+  public EstadoLimpieza siguienteEstado() {
+    return new Sucia(0);
+  }
 
   public Limpia(Integer vecesUsada) {
     super(vecesUsada);
-  }
-
-  @Override
-  public void cambiarEstado(Prenda unaPrenda) {
-    if (getVecesUsada() >= LIMITE_LIMPIA) {
-      unaPrenda.setEstadoLimpieza(new Sucia(0));
-    } else {
-      unaPrenda.setEstadoLimpieza(new Lavandose());
-    }
-  }
-
-  @Override
-  public Boolean puedeSerSugerida(Prenda unaPrenda) {
-    return true;
-  }
-
-  @Override
-  public EstadoLimpieza chequearEstado(Prenda unaPrenda) {
-    return unaPrenda.getEstadoLimpieza();
   }
 }

@@ -4,8 +4,9 @@ import prendas.Prenda;
 
 public interface EstadoLimpieza {
 
-  void cambiarEstado(Prenda unaPrenda);
+  void cambiarEstado(Prenda unaPrenda, EstadoLimpieza estadoLimpieza);
 
   Boolean puedeSerSugerida(Prenda unaPrenda);
 
+  void serUsada(Prenda unaPrenda);
 }

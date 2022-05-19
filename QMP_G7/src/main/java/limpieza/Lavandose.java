@@ -5,13 +5,18 @@ import prendas.Prenda;
 public class Lavandose implements EstadoLimpieza {
 
   @Override
-  public void cambiarEstado(Prenda unaPrenda) {
-    //TODO:
+  public void cambiarEstado(Prenda unaPrenda, EstadoLimpieza estadoLimpieza) {
+    //TODO
   }
 
   @Override
   public Boolean puedeSerSugerida(Prenda unaPrenda) {
-    return true;
+    return false;
+  }
+
+  @Override
+  public void serUsada(Prenda unaPrenda) {
+    //TODO Exception
   }
 
   public void terminarDeLavarse(Prenda unaPrenda) {
