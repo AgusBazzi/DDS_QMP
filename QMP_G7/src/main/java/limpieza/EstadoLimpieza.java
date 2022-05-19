@@ -11,4 +11,6 @@ public interface EstadoLimpieza {
   void serUsada(Prenda unaPrenda);
 
   void serLavada(Prenda prenda);
+
+  void terminarDeLavarse(Prenda prenda);
 }

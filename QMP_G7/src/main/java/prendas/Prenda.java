@@ -68,4 +68,8 @@ public class Prenda {
   public void serLavada() {
     this.estadoLimpieza.serLavada(this);
   }
+
+  public void terminarDeLavarse() {
+    this.estadoLimpieza.terminarDeLavarse(this);
+  }
 }

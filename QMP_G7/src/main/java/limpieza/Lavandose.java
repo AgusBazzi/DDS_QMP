@@ -25,6 +25,6 @@ public class Lavandose implements EstadoLimpieza {
   }
 
   public void terminarDeLavarse(Prenda unaPrenda) {
-    unaPrenda.setEstadoLimpieza(new Limpia(0));
+    this.cambiarEstado(unaPrenda, new Limpia(0));
   }
 }

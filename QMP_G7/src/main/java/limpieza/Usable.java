@@ -41,4 +41,8 @@ public abstract class Usable implements EstadoLimpieza {
       this.cambiarEstado(unaPrenda, this.siguienteEstado());
     }
   }
+
+  public void terminarDeLavarse(Prenda unaPrenda) {
+    //TODO Exception
+  }
 }
