@@ -23,7 +23,7 @@ public abstract class Usable {
 
   public void serLavada(Prenda unaPrenda) {
     this.vecesUsada = 0;
-    unaPrenda.setPrendaLavandose();
+    unaPrenda.setEstadoLimpieza(new Lavandose());
   }
 
   abstract EstadoLimpieza chequearEstado(Prenda unaPrenda);

@@ -13,9 +13,9 @@ public class Limpia extends Usable implements EstadoLimpieza {
   @Override
   public void cambiarEstado(Prenda unaPrenda) {
     if (getVecesUsada() >= LIMITE_LIMPIA) {
-      unaPrenda.setPrendaSucia();
+      unaPrenda.setEstadoLimpieza(new Sucia(0));
     } else {
-      unaPrenda.setPrendaLavandose();
+      unaPrenda.setEstadoLimpieza(new Lavandose());
     }
   }
 

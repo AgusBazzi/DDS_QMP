@@ -53,28 +53,12 @@ public class Prenda {
         return material;
     }
 
-    public void setEstadoLimpieza() {
-        this.estadoLimpieza = new Limpia(0);
+    public void setEstadoLimpieza(EstadoLimpieza nuevoEstadoLimpieza) {
+        this.estadoLimpieza = nuevoEstadoLimpieza;
     }
 
     public EstadoLimpieza getEstadoLimpieza() {
         return this.estadoLimpieza;
-    }
-
-    public void setPrendaSucia() {
-        this.estadoLimpieza = new Sucia(0);
-    }
-
-    public void setPrendaLimpia() {
-        this.estadoLimpieza = new Limpia(0);
-    }
-
-    public void setPrendaPercudida() {
-        this.estadoLimpieza = new Percudida();
-    }
-
-    public void setPrendaLavandose() {
-        this.estadoLimpieza = new Lavandose();
     }
 
     public void utilizarPrenda() {

@@ -12,9 +12,9 @@ public class Sucia extends Usable implements EstadoLimpieza {
   @Override
   public void cambiarEstado(Prenda unaPrenda) {
     if (getVecesUsada() >= LIMITE_SUCIA) {
-      unaPrenda.setPrendaPercudida();
+      unaPrenda.setEstadoLimpieza(new Percudida());
     } else {
-      unaPrenda.setPrendaLavandose();
+      unaPrenda.setEstadoLimpieza(new Lavandose());
     }
   }
 
