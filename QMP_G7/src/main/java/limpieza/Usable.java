@@ -14,10 +14,6 @@ public abstract class Usable {
   }
 
   public void serUsada() {
-    aumentarVecesUsadas();
-  }
-
-  public void aumentarVecesUsadas() {
     this.vecesUsada++;
   }
 
