@@ -54,7 +54,7 @@ public class Guardarropa {
 		Prenda unaPrendaSugerida;
 		unaPrendaSugerida = prendas
 				.stream()
-				.filter(prenda -> prenda.tieneCategoria(unaCategoria))
+				.filter(prenda -> prenda.puedeSerSugerida(unaCategoria))
 				.findAny()
 				.get();
 

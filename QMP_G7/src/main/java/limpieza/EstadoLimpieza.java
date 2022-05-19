@@ -6,7 +6,7 @@ public interface EstadoLimpieza {
 
   void cambiarEstado(Prenda unaPrenda, EstadoLimpieza estadoLimpieza);
 
-  Boolean puedeSerSugerida(Prenda unaPrenda);
+  Boolean puedeSerSugerida();
 
   void serUsada(Prenda unaPrenda);
 

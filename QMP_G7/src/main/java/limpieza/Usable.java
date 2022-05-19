@@ -32,7 +32,7 @@ public abstract class Usable implements EstadoLimpieza {
   }
 
   @Override
-  public Boolean puedeSerSugerida(Prenda unaPrenda) {
+  public Boolean puedeSerSugerida() {
     return true;
   }
 

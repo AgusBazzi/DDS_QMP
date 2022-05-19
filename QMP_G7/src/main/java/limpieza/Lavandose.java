@@ -6,11 +6,11 @@ public class Lavandose implements EstadoLimpieza {
 
   @Override
   public void cambiarEstado(Prenda unaPrenda, EstadoLimpieza estadoLimpieza) {
-    //TODO
+    unaPrenda.setEstadoLimpieza(estadoLimpieza);
   }
 
   @Override
-  public Boolean puedeSerSugerida(Prenda unaPrenda) {
+  public Boolean puedeSerSugerida() {
     return false;
   }
 

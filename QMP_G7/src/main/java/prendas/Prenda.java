@@ -72,4 +72,8 @@ public class Prenda {
   public void terminarDeLavarse() {
     this.estadoLimpieza.terminarDeLavarse(this);
   }
+
+  public Boolean puedeSerSugerida(Categoria unaCategoria) {
+    return this.tieneCategoria(unaCategoria) && this.estadoLimpieza.puedeSerSugerida();
+  }
 }
