@@ -18,4 +18,9 @@ public class Percudida implements EstadoLimpieza {
   public void serUsada(Prenda unaPrenda) {
     //TODO Exception
   }
+
+  @Override
+  public void serLavada(Prenda prenda) {
+    //TODO Exception
+  }
 }

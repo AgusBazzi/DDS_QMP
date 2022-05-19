@@ -9,4 +9,6 @@ public interface EstadoLimpieza {
   Boolean puedeSerSugerida(Prenda unaPrenda);
 
   void serUsada(Prenda unaPrenda);
+
+  void serLavada(Prenda prenda);
 }

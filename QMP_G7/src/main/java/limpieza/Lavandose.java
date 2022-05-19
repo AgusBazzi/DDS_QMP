@@ -19,6 +19,11 @@ public class Lavandose implements EstadoLimpieza {
     //TODO Exception
   }
 
+  @Override
+  public void serLavada(Prenda prenda) {
+    //TODO
+  }
+
   public void terminarDeLavarse(Prenda unaPrenda) {
     unaPrenda.setEstadoLimpieza(new Limpia(0));
   }

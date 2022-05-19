@@ -23,8 +23,7 @@ public abstract class Usable implements EstadoLimpieza {
   }
 
   public void serLavada(Prenda unaPrenda) {
-    this.vecesUsada = 0;
-    unaPrenda.setEstadoLimpieza(new Lavandose());
+    this.cambiarEstado(unaPrenda, new Lavandose());
   }
 
   @Override

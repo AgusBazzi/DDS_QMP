@@ -61,12 +61,11 @@ public class Prenda {
     return this.estadoLimpieza;
   }
 
-  public void utilizarPrenda() {
-
-    //TODO: implementar el uso de la prenda, cuando se hace la sugerencia
-  }
-
   public void serUsada() {
     this.estadoLimpieza.serUsada(this);
+  }
+
+  public void serLavada() {
+    this.estadoLimpieza.serLavada(this);
   }
 }
