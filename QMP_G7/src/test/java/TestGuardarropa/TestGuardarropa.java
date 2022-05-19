@@ -2,8 +2,8 @@ package TestGuardarropa;
 
 import atuendo.Atuendo;
 import atuendo.Guardarropa;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 import prendas.*;
 
 import java.util.List;

@@ -10,7 +10,7 @@ public class BuilderPrenda {
     this.resultado = unaPrenda;
   }
 
-  public void buildTipo(TipoDePrendaEnum tipoDePrenda) throws Exception {
+  public void buildTipo(TipoDePrendaEnum tipoDePrenda) {
     TipoPrenda tipoAAsignar = null;
     switch(tipoDePrenda) {
       case REMERA:

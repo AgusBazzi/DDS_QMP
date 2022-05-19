@@ -9,7 +9,11 @@ public class Prenda {
   private Material material;
   private EstadoLimpieza estadoLimpieza;
 
-  // --- Setters --- //
+  public Prenda() {
+    this.estadoLimpieza = new Limpia(0);
+  }
+
+// --- Setters --- //
 
   public void setTipoPrenda(TipoPrenda tipoPrenda) {
     this.tipoPrenda = tipoPrenda;
