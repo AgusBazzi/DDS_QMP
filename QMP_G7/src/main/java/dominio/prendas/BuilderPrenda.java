@@ -38,7 +38,7 @@ public class BuilderPrenda {
     this.resultado.setMaterial(material);
   }
 
-  public void buildReqClimaticos(Integer temperaturaMinF, Integer temperaturaMaxF) {
+  public void buildReqClimaticos(Float temperaturaMinF, Float temperaturaMaxF) {
     ReqClimaticos reqClimaticos = new ReqClimaticos();
     reqClimaticos.setTemperaturaMinF(temperaturaMinF);
     reqClimaticos.setTemperaturaMaxF(temperaturaMaxF);
