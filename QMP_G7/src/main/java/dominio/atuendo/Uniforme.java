@@ -1,7 +1,7 @@
-package atuendo;
+package dominio.atuendo;
 
 import excepciones.UniformeInvalidoException;
-import prendas.Categoria;
+import dominio.prendas.Categoria;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,8 +1,8 @@
-package atuendo;
+package dominio.atuendo;
 
 import excepciones.PrendaDeUniformeIncorrectaException;
-import prendas.Categoria;
-import prendas.Prenda;
+import dominio.prendas.Categoria;
+import dominio.prendas.Prenda;
 
 public class BuilderUniforme {
   

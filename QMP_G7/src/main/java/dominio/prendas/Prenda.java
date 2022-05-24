@@ -1,11 +1,13 @@
-package prendas;
+package dominio.prendas;
 
 import excepciones.PrendaIncompletaException;
+import servicios.Clima;
 
 public class Prenda {
 
     private TipoPrenda tipoPrenda;
     private Material material;
+    private ReqClimaticos reqClimaticos;
 
     // --- Setters --- //
 
@@ -50,4 +52,19 @@ public class Prenda {
     public Material getMaterial() {
         return material;
     }
+
+    public Boolean esAcordeAClima(Clima unClima) {
+        try {
+            return this.reqClimaticos.esAcordeAClima(unClima);
+        } catch (Exception e) {
+            return true;
+            // Si no se cargan los requerimientos, por default se puede usar.
+            // No quiero convertirlo en atributo obligatorio (no le veo sentido)
+        }
+    }
+
+    public void setReqClimaticos(ReqClimaticos reqClimaticos) {
+        this.reqClimaticos = reqClimaticos;
+    }
+
 }

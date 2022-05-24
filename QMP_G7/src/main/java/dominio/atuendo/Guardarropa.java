@@ -1,12 +1,11 @@
-package atuendo;
+package dominio.atuendo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.DoubleStream;
 
 import excepciones.PrendaInexistenteException;
-import prendas.Categoria;
-import prendas.Prenda;
+import dominio.prendas.Categoria;
+import dominio.prendas.Prenda;
 
 public class Guardarropa {
 
