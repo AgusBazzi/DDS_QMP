@@ -1,11 +1,10 @@
 package TestGuardarropa;
 
-import atuendo.Atuendo;
-import atuendo.Guardarropa;
-import org.junit.jupiter.api.Assertions;
+import dominio.atuendo.Atuendo;
+import dominio.atuendo.Guardarropa;
+import dominio.prendas.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import prendas.*;
 
 import java.util.List;
 
