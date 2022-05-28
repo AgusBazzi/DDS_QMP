@@ -67,4 +67,7 @@ public class Prenda {
         this.reqClimaticos = reqClimaticos;
     }
 
+  public Boolean esAptaParaSerSugerible(Categoria unaCategoria, Clima unClima) {
+        return tieneCategoria(unaCategoria) && esAcordeAClima(unClima);
+  }
 }
