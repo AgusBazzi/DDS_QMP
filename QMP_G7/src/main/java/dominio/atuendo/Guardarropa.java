@@ -3,7 +3,6 @@ package dominio.atuendo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
 import excepciones.PrendaInexistenteException;
 import dominio.prendas.Categoria;
 import dominio.prendas.Prenda;
