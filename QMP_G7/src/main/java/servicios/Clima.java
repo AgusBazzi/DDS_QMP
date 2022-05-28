@@ -1,20 +1,21 @@
 package servicios;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class Clima {
 
-  private String dateTime;
+  private LocalDateTime dateTime;
   private String phrase;
   private Boolean isDayLight;
   private Float precipitationProbability;
   private Float  temperatureF;
 
   public String getDateTime() {
-    return dateTime;
+    return dateTime.toString();
   }
 
-  public void setDateTime(String dateTime) {
+  public void setDateTime(LocalDateTime dateTime) {
     this.dateTime = dateTime;
   }
 
@@ -52,7 +53,7 @@ public class Clima {
 
   public static Clima convertirAClima(HashMap<String, Object> rawData) {
     Clima nuevoClima = new Clima();
-    nuevoClima.setDateTime(rawData.get("DateTime").toString());
+    nuevoClima.setDateTime(LocalDateTime.parse(rawData.get("DateTime").toString()));
     nuevoClima.setPhrase(rawData.get("IconPhrase").toString());
     nuevoClima.setDayLight((Boolean) rawData.get("IsDaylight"));
     nuevoClima.setPrecipitationProbability((Float) rawData.get("PrecipitationProbability"));
