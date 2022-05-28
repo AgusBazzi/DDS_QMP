@@ -3,9 +3,11 @@ package dominio.atuendo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
 import excepciones.PrendaInexistenteException;
 import dominio.prendas.Categoria;
 import dominio.prendas.Prenda;
+import servicios.Clima;
 
 public class Guardarropa {
 
@@ -18,29 +20,29 @@ public class Guardarropa {
 	// private List<Atuendo> atuendosPersonalizados; no estoy seguro si esto
 	// realmente importa //en el d de clases tiene lista de prendas
 
-	public Atuendo crearSugerencia() { // no puse lo de clima porque entiendo no lo implementamos
+	public Atuendo crearSugerencia(Clima unClima) { // no puse lo de clima porque entiendo no lo implementamos
 		Atuendo unaSugerencia = new Atuendo();
-		agregarPrendaSugerida(unaSugerencia, Categoria.PARTE_SUPERIOR);
-		agregarPrendaSugerida(unaSugerencia, Categoria.PARTE_INFERIOR);
-		agregarPrendaSugerida(unaSugerencia, Categoria.CALZADO);
+		agregarPrendaSugerida(unaSugerencia, Categoria.PARTE_SUPERIOR, unClima);
+		agregarPrendaSugerida(unaSugerencia, Categoria.PARTE_INFERIOR, unClima);
+		agregarPrendaSugerida(unaSugerencia, Categoria.CALZADO, unClima);
 		return unaSugerencia;
 	} //testear
 
-	public Atuendo crearSugerenciaConAccesorio() {
-		Atuendo unaSugerencia = new Atuendo();
-		unaSugerencia = crearSugerencia();
-		agregarPrendaSugerida(unaSugerencia, Categoria.ACCESORIO);
+	public Atuendo crearSugerenciaConAccesorio(Clima unClima) {
+		Atuendo unaSugerencia;
+		unaSugerencia = crearSugerencia(unClima);
+		agregarPrendaSugerida(unaSugerencia, Categoria.ACCESORIO, unClima);
 		return unaSugerencia;
 	} //testear
 
-	public List<Atuendo> variasSugerencias(int cantidadSugerencias) {
+	public List<Atuendo> variasSugerencias(int cantidadSugerencias, Clima unClima) {
 		List<Atuendo> listaSugerencias = new ArrayList<>();
 		for (int i = 0; i < cantidadSugerencias; i++) {
-			Atuendo unaSugerencia = new Atuendo();
+			Atuendo unaSugerencia;
 			if (Math.random() == 0) {
-				unaSugerencia = crearSugerencia();
+				unaSugerencia = crearSugerencia(unClima);
 			} else {
-				unaSugerencia = crearSugerenciaConAccesorio();
+				unaSugerencia = crearSugerenciaConAccesorio(unClima);
 			}
 			listaSugerencias.add(unaSugerencia);
 		}
@@ -48,11 +50,13 @@ public class Guardarropa {
 		return listaSugerencias;
 	} // test, ver como hacer que no repita sugerencias
 
-	private void agregarPrendaSugerida(Atuendo atuendoSugerido, Categoria unaCategoria) throws PrendaInexistenteException {
-		Prenda unaPrendaSugerida = new Prenda();
+	private void agregarPrendaSugerida(Atuendo atuendoSugerido,
+																		 Categoria unaCategoria,
+																		 Clima unClima) throws PrendaInexistenteException {
+		Prenda unaPrendaSugerida;
 		unaPrendaSugerida = prendas
 				.stream()
-				.filter(prenda -> prenda.tieneCategoria(unaCategoria))
+				.filter(prenda -> prenda.esAptaParaSerSugerible(unaCategoria, unClima))
 				.findAny()
 				.get();
 
