@@ -1,4 +1,4 @@
-package prendas;
+package dominio.prendas;
 
 public class TipoPrenda {
     private TipoDePrendaEnum tipoDePrenda;

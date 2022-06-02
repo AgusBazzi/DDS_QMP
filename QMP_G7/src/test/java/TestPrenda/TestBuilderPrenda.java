@@ -1,7 +1,7 @@
 package TestPrenda;
 
+import dominio.prendas.*;
 import org.junit.Before;
-import prendas.*;
 
 import org.junit.Test;
 

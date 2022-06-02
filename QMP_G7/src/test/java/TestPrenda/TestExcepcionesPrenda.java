@@ -1,8 +1,11 @@
 package TestPrenda;
 
+import dominio.prendas.BuilderPrenda;
+import dominio.prendas.Prenda;
+import dominio.prendas.TipoDePrendaEnum;
+import dominio.prendas.Trama;
 import excepciones.PrendaIncompletaException;
 import org.junit.Before;
-import prendas.*;
 
 import org.junit.Assert;
 import org.junit.Test;

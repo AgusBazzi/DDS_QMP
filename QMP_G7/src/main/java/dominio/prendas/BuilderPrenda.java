@@ -1,4 +1,4 @@
-package prendas;
+package dominio.prendas;
 
 import excepciones.PrendaIncompletaException;
 
@@ -36,6 +36,13 @@ public class BuilderPrenda {
     material.setColorPrincipal(colorPrincipal);
     material.setColorSecundario(colorSecundario);
     this.resultado.setMaterial(material);
+  }
+
+  public void buildReqClimaticos(Float temperaturaMinF, Float temperaturaMaxF) {
+    ReqClimaticos reqClimaticos = new ReqClimaticos();
+    reqClimaticos.setTemperaturaMinF(temperaturaMinF);
+    reqClimaticos.setTemperaturaMaxF(temperaturaMaxF);
+    this.resultado.setReqClimaticos(reqClimaticos);
   }
 
   public Prenda getResultado() throws PrendaIncompletaException, NoSuchFieldException, IllegalAccessException {

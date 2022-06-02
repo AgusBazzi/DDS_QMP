@@ -1,6 +1,6 @@
-package atuendo;
+package dominio.atuendo;
 
-import prendas.Prenda;
+import dominio.prendas.Prenda;
 
 import java.util.ArrayList;
 import java.util.List;

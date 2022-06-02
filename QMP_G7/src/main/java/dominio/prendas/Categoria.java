@@ -1,4 +1,4 @@
-package prendas;
+package dominio.prendas;
 
 public enum Categoria {
     PARTE_INFERIOR,

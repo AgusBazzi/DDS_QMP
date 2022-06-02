@@ -1,4 +1,4 @@
-package atuendo;
+package dominio.atuendo;
 
 import java.util.*;
 import java.util.stream.Collectors;
