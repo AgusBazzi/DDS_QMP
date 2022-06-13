@@ -1,8 +1,10 @@
-package dominio.atuendo;
+package dominio.guardarropas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
+import dominio.atuendo.Atuendo;
 import excepciones.PrendaInexistenteException;
 import dominio.prendas.Categoria;
 import dominio.prendas.Prenda;
@@ -10,9 +12,11 @@ import servicios.Clima;
 
 public class Guardarropa {
 
-	// esta bien el package?
 
+	private String descripcion;
 	private List<Prenda> prendas = new ArrayList<>();
+	private List<Recomendacion> recomendaciones = new ArrayList<>();
+	private List<Recomendacion> recomendacionesAplicadas = new ArrayList<>();
 
 	public Guardarropa() {
 	}
@@ -70,7 +74,36 @@ public class Guardarropa {
 		this.prendas.add(unaPrenda);
 	}
 
+	public void quitarPrenda(Prenda unaPrenda) {
+		if(this.prendas.contains(unaPrenda)) {
+			this.prendas.remove(unaPrenda);
+		}
+	}
+
 	public List<Prenda> getPrendas() {
 		return this.prendas;
+	}
+
+	public void recibirRecomendacion(Recomendacion unaRecomendacion) {
+		this.recomendaciones.add(unaRecomendacion);
+	}
+
+	public void aplicarRecomendacion(Recomendacion unaRecomendacion) {
+		if (this.recomendaciones.contains(unaRecomendacion)) {
+			unaRecomendacion.aplicar();
+			this.recomendaciones.remove(unaRecomendacion);
+			this.recomendacionesAplicadas.add(unaRecomendacion);
+		}
+	}
+
+	public void deshacerRecomendacion(Recomendacion unaRecomendacion) {
+		if (this.recomendacionesAplicadas.contains(unaRecomendacion)) {
+			unaRecomendacion.deshacer();
+			this.recomendacionesAplicadas.remove(unaRecomendacion);
+		}
+	}
+
+	public List<Recomendacion> verMisRecomendaciones() {
+		return this.recomendaciones;
 	}
 }

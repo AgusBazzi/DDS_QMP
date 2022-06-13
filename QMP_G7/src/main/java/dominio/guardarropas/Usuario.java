@@ -22,8 +22,15 @@ public class Usuario {
   public List<Recomendacion> verMisRecomendaciones() {
     return this.guardarropas
         .stream()
-        .flatMap( g -> g.verMisRecomendaciones)
+        .flatMap(guardarropa -> guardarropa.verMisRecomendaciones().stream())
         .collect(Collectors.toList());
+  }
+
+  public void recibirRecomendacion(Recomendacion unaRecomendacion) {
+    Guardarropa guardarropaObjetivo = unaRecomendacion.getGuardarropasObjetivo();
+    if (this.guardarropas.contains(guardarropaObjetivo)) {
+      guardarropaObjetivo.recibirRecomendacion(unaRecomendacion);
+    }
   }
 
 }
